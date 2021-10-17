@@ -1,18 +1,29 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
+import { RouterModule } from "@angular/router";
+import { AppComponent } from "./app.component";
+import { NextPageComponent } from "./next-page/next-page.component";
+import { ProductListComponent } from "./product-list/product-list.component";
+import { TopBarComponent } from "./top-bar/top-bar.component";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
+  imports:[
     BrowserModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+      {path: '', component: ProductListComponent},
+      {path: 'items', component: NextPageComponent}
+    ])
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    TopBarComponent,
+    ProductListComponent,
+    NextPageComponent
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
-export class AppModule { }
+export class AppModule{}
